@@ -1,0 +1,466 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 70, 70);
+    color: white;
+    padding: 20px 40px;
+}
+
+
+#burger-button{
+    font-size: x-large;
+    border: none;
+    padding: 5px 10px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+#burger-button:hover {
+    background-color: white;
+    color: black;
+}
+
+header img {
+    width: 100px;
+    height: 100px;
+}
+
+main {
+    flex-grow: 1;
+    padding: 50px 0;
+}
+
+#contenedor {
+    border: 1px solid gray;
+    width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.4)
+}
+
+
+#boton-crear {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color:rgb(255, 70, 70);
+    color: white;
+    transition: border-radius .3s ease, background-color .3s ease, transform .3s ease;
+    cursor: pointer;
+}
+
+#boton-crear:hover {
+    border-radius: 0;
+    background-color: rgb(15, 119, 15);
+    transform: scale(1.15);
+}
+
+/*Estilos para la lista de recetas, es decir el ul*/
+
+.lista-recetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px auto;
+    list-style: none;
+    padding: 0;
+}
+
+.lista-recetas li {
+    width: 150px;
+    height: auto;
+    position: relative;
+    text-align: center;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.lista-recetas li:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid orange;
+}
+
+.lista-recetas li img {
+    width: 150px;
+    height: auto;
+}
+
+.boton-eliminar-receta {
+    position: absolute;
+    top: 3%;
+    left: 100%;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.boton-eliminar-receta:hover {
+    background-color: orange;
+}
+
+.boton-editar-receta {
+    position: absolute;
+    top: 25%;
+    left: 100%;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.boton-editar-receta:hover {
+    background-color: rgb(0, 157, 0);
+}
+
+.lista-recetas li:hover .boton-eliminar-receta,
+.lista-recetas li:hover .boton-editar-receta {
+    left: 77%;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/*Estilos para el modulo de informacion */
+
+.modulo-info {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    height: 100%;
+    width: 30%;
+    background-color: #F9F9F9;
+    color: #333333;
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),  
+                      url("./recursos/imagen-receta1.jpg");
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.modulo-info-activo {
+    left: 0;
+    opacity: 1;
+}
+
+.modulo-info h1 {
+    border: 1px solid gray;
+    padding: 24px;
+    margin: 0;
+    background-color: #475569;
+    color: white;
+}
+
+.modulo-info h2 {
+    padding: 0 25px;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+#boton-eliminar-info {
+    position: absolute;
+    top: 40%;
+    left: 90%;
+    padding: 50px 10px;
+    border: 1px solid gray;
+    border-radius: 0 10px 10px 0;
+    border-left: none; 
+    background-color: white;
+    opacity: 0;
+    visibility: hidden; /* Hace que el boton no se pueda dar click */
+    z-index: 0;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.modulo-info:hover #boton-eliminar-info {
+    opacity: 1;
+    visibility: visible;
+    left: 100%;
+}
+
+#boton-eliminar-info:hover {
+    transform: scale(1.1);
+}
+
+/* ESTILOS PARA los MODULOS */
+
+.modulo-contenedor {
+    background-color: rgba(36, 36, 36, .8);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.modulo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 90px 1fr 1fr;
+    background-color: white;
+    position: absolute;
+    width: 75%;
+    height: auto;
+    min-height: 75%;
+    max-height: 90vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* ESTILOS PARA EL CONTENIDO DEL MODULO */
+
+/*-------------Cabecera-----------------*/
+
+#cabecera-modulo {
+    background-color: #475569;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    color: white;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+
+.boton-guardar {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    margin-right: 20px;
+    background-color: rgb(15, 119, 15);
+    color: white;
+    font-size: medium;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.boton-guardar:hover {
+    border-radius: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: rgb(0, 157, 0);
+}
+
+
+
+.boton-eliminar {
+    padding: 15px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: white;
+    font-size: medium;
+    color: red;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.boton-eliminar:hover {
+    border-radius: 0;
+    background-color: rgb(255, 70, 70);
+    color: white;
+    border: none;
+}
+
+
+
+
+#titulo-modulo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+#ingredientes-modulo {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;  
+    
+}
+
+#preparacion-modulo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+#descripcion-modulo {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.modulo input,
+.modulo textarea {
+    width: 80%;
+    padding: 15px;
+    border: 1px solid gray;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: all .3s ease;
+}
+
+.modulo textarea {
+    resize: none;
+    min-height: 100px;
+}
+
+
+.modulo input:hover,
+.modulo textarea:hover {
+    transform: scale(1.05);
+    border-radius: 0;
+}
+
+.modulo input:focus,
+.modulo textarea:focus {
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.4);
+}
+
+/*Estilos para el modulo-detalle*/
+
+.modulo-contenedor-detalle {
+    background-color: rgba(36, 36, 36, .8);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.modulo-detalle {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    border: 1px solid gray;
+    background-color: white;
+    position: absolute;
+    width: 75%;
+    height: auto;
+    min-height: 75%;
+    max-height: 90vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.4);
+}
+
+#titulo-detalle {
+    background-color: rgb(255, 70, 70);
+    max-width: 100%;
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+}
+
+
+#ingredientes-detalle {
+    max-width: 100%;
+    padding: 10px;
+}
+
+#preparacion-detalle {
+    max-width: 100%;
+    padding: 10px;
+}  
+
+#descripcion-detalle {
+    max-width: 100%;
+    padding: 10px;
+}
+
+#boton-eliminar-detalle {
+    position: absolute;
+    left: 95%;
+    top: 2%;
+    font-size: large;
+    font-weight: 500;
+    border: none;
+    background-color: transparent;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+#boton-eliminar-detalle:hover {
+    transform: scale(2);
+}
+
+
+/*Estilos para el mensaje de que la receta se guardo con exito */
+
+.mensaje {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 3%;
+    left: -50%;
+    opacity: 0;
+    background-color: white;
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all .6s ease;
+    z-index: 2;
+}
+
+.mensaje-activo {
+    left: 2%;
+    opacity: 1;
+}
+
+.mensaje img {
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+}
+
+
+
+/* estilos para el footer */
+
+footer {
+    background-color: rgb(255, 70, 70);
+    padding: 5px;
+    color: white;
+}

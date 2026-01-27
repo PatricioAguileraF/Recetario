@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>RECETARIO</title>
+</head>
+
+<body>
+    <header>
+        <button id="burger-button">☰</button>
+        <h1><b>Recetario</b></h1>
+        <img src="./recursos/cocinero.jpg">
+    </header>
+
+    <main>
+
+        <div id="contenedor">
+            <h2>Nueva Receta</h2>
+            <button id="boton-crear">+ Crear</button>
+            <ul class="lista-recetas">
+
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- Modulo que sale cuando se da click al boton de hamburguesa -->
+
+    <div class="modulo-info">
+
+        <h1><b>Bienvenido a haz tu receta</b></h1><br>
+        <h2>
+            <b>Para empezar</b><br>
+            tienes que darle click al boton "+crear"
+            inmediatamente aparecera un modulo donde
+            tienes que crear tu receta. Una vez llenado los campos <b>dale al boton de "Guardar"</b>
+            y listo tu receta fue creada y aparecera en el inicio de la pagina.
+
+            Recuerda que puedes editar o eliminar tu receta cuando desees.
+
+        </h2>
+        <button id="boton-eliminar-info">❌</button>
+
+    </div>
+
+
+    <!-- "Modulo donde se ingresa informacion para crear la receta nueva o para editar una receta creada" -->
+
+    <div class="modulo-contenedor">
+
+        <div class="modulo">
+            <div id="cabecera-modulo">
+                <h3>CREA TU RECETA</h3>
+                <div>
+                    <button class="boton-guardar">Guardar</button>
+                    <button class="boton-eliminar">X</button>
+                </div>
+            </div>
+            <div id="titulo-modulo">
+                <h4>Titulo de la receta</h4>
+                <input id="input-titulo" type="text" placeholder="Escribe aquí el titulo de tu receta...">
+            </div>
+            <div id="ingredientes-modulo">
+                <h4>Ingredientes</h4>
+                <textarea id="txt-ingredientes" placeholder="Escribe aqui los ingredientes..."></textarea>
+            </div>
+            <div id="preparacion-modulo">
+                <h4>Preparación</h4>
+                <textarea id="txt-preparacion" placeholder="Escribe aqui los pasos..."></textarea>
+            </div>
+            <div id="descripcion-modulo">
+                <h4>Descripción</h4>
+                <textarea id="txt-descripcion" placeholder="Escribe aqui la descripción..."></textarea>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="modulo-contenedor-detalle">
+        <div class="modulo-detalle">
+            <div id="titulo-detalle">
+                <h2></h2>
+            </div>
+            <div id="ingredientes-detalle">
+                <h3>Ingredientes</h3>
+                <p></p>
+            </div>
+            <div id="preparacion-detalle">
+                <h3>Preparación</h3>
+                <p></p>
+            </div>
+            <div id="descripcion-detalle">
+                <h3>Descripción</h3>
+                <p></p>
+            </div>
+
+            <button id="boton-eliminar-detalle">X</button>
+
+        </div>
+    </div>
+
+    <!-- Pequeño bloque que aparece cuando se guarda una receta -->
+
+    <div class="mensaje">
+        <h3>¡La receta se guardo con exito!</h3>
+        <img src="./recursos/Paloma verde.png" />
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Mi recetario. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
