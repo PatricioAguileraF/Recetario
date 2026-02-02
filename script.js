@@ -103,7 +103,7 @@ function mostrarReceta() {
 
         // asignando contenido a los elementos creados
 
-        crearImg.src = './recursos/imagen-receta.jpg';
+        crearImg.src = window.rutaImagenDefault;
         crearH4.textContent = receta.titulo;
         crearBotonEliminar.textContent = '❌';
         crearBotonEditar.textContent = '✏️';
